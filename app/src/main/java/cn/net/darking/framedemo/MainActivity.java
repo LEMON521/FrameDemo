@@ -55,7 +55,8 @@ public class MainActivity extends Activity implements View.OnClickListener, View
      * 长按点击事件
      *
      * @param v
-     * @return false:不拦截事件,继续向下分发
+     * @return boolean
+     * false:不拦截事件,继续向下分发
      * true: 拦截事件,事件不会继续分发
      */
     @Override
@@ -63,7 +64,7 @@ public class MainActivity extends Activity implements View.OnClickListener, View
 
         switch (v.getId()) {
             case R.id.activity_main_btn_xutils:
-                showToastShort(v.getContext(), "Xutils按钮被长按!");
+                showToastShort("Xutils按钮被长按!");
                 break;
         }
 

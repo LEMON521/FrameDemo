@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
 import java.util.List;
 
 import cn.net.darking.framedemo.R;
@@ -21,22 +24,26 @@ public class XUtilsAdapter extends XUtilsBaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Holder tag = null;
+        Holder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(
                     R.layout.item_xutils, null);
-            tag = new Holder();
-            tag.name = (TextView) convertView.findViewById(R.id.item_xutils_tv);
-            convertView.setTag(tag);
+            holder = new Holder();
+//            tag.name = (TextView) convertView.findViewById(R.id.item_xutils_tv);
+            x.view().inject(holder,convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
         }
+
         //设置数据
-        tag = (Holder) convertView.getTag();
-        tag.name.setText(data.get(position).toString());
+        holder.name.setText(data.get(position).toString());
 
         return convertView;
     }
 
-    public static class Holder {
-        public TextView name;//文件名称
+    public class Holder {
+        @ViewInject(R.id.item_xutils_tv)
+        private TextView name;//文件名称
     }
 }

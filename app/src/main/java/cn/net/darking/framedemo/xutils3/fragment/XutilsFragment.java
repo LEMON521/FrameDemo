@@ -48,15 +48,15 @@ public class XutilsFragment extends XutilsBaseFragment implements AdapterView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position % 3) {
             case 0:
-                showToastShort(mContext, "条目" + position + "被点击了");
+                showToastShort("条目" + position + "被点击了");
                 break;
 
             case 1:
-                showToastShort(mContext, R.string.xutils);
+                showToastShort(R.string.xutils);
                 break;
 
             case 2:
-                showToastShort(mContext, R.layout.item_xutils);
+                showToastShort(R.layout.item_xutils);
                 break;
 
         }
